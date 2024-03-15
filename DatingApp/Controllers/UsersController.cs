@@ -5,9 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DatingApp.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class UsersController : ControllerBase
+
+    public class UsersController : BaseApiController
     {
         private readonly DataContext _context;
         public UsersController(DataContext context)
@@ -23,7 +22,7 @@ namespace DatingApp.Controllers
             return users;
         }
         [HttpGet("{id}")]
-        public async Task<ActionResult<AppUser>> GetUser(int id)
+        public async Task<ActionResult<AppUser?>> GetUser(int id)
         {
             return await _context.Users.FindAsync(id);
         }
