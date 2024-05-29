@@ -7,13 +7,9 @@ using Microsoft.EntityFrameworkCore;
 namespace DatingApp.Controllers
 {
     [Authorize]
-    public class UsersController : BaseApiController
+    public class UsersController(DataContext context) : BaseApiController
     {
-        private readonly DataContext _context;
-        public UsersController(DataContext context)
-        {
-            _context = context;
-        }
+        private readonly DataContext _context = context;
 
         [AllowAnonymous]
         [HttpGet()]
